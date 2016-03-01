@@ -1,25 +1,29 @@
 #!/bin/sh
 
-HEART_FULL=♥
-HEART_EMPTY=♡
-[ -z "$NUM_HEARTS" ] &&
-    NUM_HEARTS=5
+ULL=☢
+EMPTY=O
+[ -z "$NUM" ] &&
+    NUM=5
 
 cutinate()
 {
-    perc=$1
-    inc=$(( 100 / $NUM_HEARTS))
+    cperc=$1
+    step=$(( 100 / $NUM))
+    nb_full=0
 
-
-    for i in `seq $NUM_HEARTS`; do
-        if [ $perc -lt 100 ]; then
-            echo $HEART_EMPTY
-        else
-            echo $HEART_FULL
-        fi
-        perc=$(( $perc + $inc ))
+    while [ $cperc -ge $step ];do
+        cperc=$(( $cperc - $step ))
+        let nb_full++
+        display=$display$FULL
     done
+    while [ $nb_full -lt $NUM ];do
+        display=$display$EMPTY
+        let nb_full++
+    done
+
+    echo $display
 }
+
 
 linux_get_bat ()
 {
