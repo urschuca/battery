@@ -1,6 +1,6 @@
 #!/bin/sh
 
-ULL=☢
+FULL=☢
 EMPTY=O
 [ -z "$NUM" ] &&
     NUM=5
